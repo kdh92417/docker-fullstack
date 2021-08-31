@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY ./package.json ./
+
+RUN npm install
+
+COPY . .
+
+# start가 아닌 dev인 이유는 코드가 변경될 때 바로 반영을 시켜주게 해주는 
+# nodemon이라는 모듈을 사용하고 싶기 때문
+CMD ["npm", "run", "dev"]
